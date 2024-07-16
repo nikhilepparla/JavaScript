@@ -1,19 +1,19 @@
-/*TODO: Higher Order Function
--> Function that takes one or more functions as arguments, or returns a function as its result
+/*
+1) EveryTime newName function is called the scope of count 
+is saved in first function
+2) Closure will only save the scope of parent which is required not the entire scope of parent
+3) Below exapmle outer fun name() will not store the saomeUselessFunction after the Outer fun Execution
 */
-
-//Example 1
-function someRFunction() {
-    function letsprint() { console.log("Say Hello"); }
-    return letsprint
+function name() {
+    let count = 0;
+    function someUseLessFunction() { };
+    function first() {
+        count++
+        return count
+    }
+    return first
 }
-let name = someRFunction()
-console.log(name);//Output :- [Function: letsprint]
-
-//Exapmle 2
-function someRFunction2() {
-    function letsprint() { console.log("Say Hello"); }
-    return letsprint
-}
-let name2 = someRFunction2()
-console.log(name2()); // Output :- Say Hello
+let newName = name()
+console.log(newName());
+console.log(newName());
+console.log(newName());
